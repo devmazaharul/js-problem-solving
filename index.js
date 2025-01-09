@@ -38,8 +38,6 @@ compactObject(object);
 
 //find vowel form string
 
-
-
 const findVowel=(str="")=>{
   const result={
     count:0,
@@ -59,3 +57,33 @@ const findVowel=(str="")=>{
 
 findVowel("hellow world")
 
+
+//chuck arrry
+/**
+ * @param {Array} arr
+ * @param {number} size
+ * @return {Array}
+ */
+/**
+ * @param {Array} arr
+ * @param {number} size
+ * @return {Array[]}
+ */
+const chunk = (arr, size) => {
+  const chunkedArray = [];
+
+  for (let i = 0; i < arr.length; i += size) {
+
+    
+    chunkedArray.push(arr.slice(i, i + size));
+  }
+
+  return chunkedArray;
+};
+
+const arr=[2,1,4,4,6,3]
+chunk(arr,3)
+
+
+
+console.log(arr.slice(0,2))
