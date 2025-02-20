@@ -1,3 +1,39 @@
+//number to words
+const units = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+const teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+const tens = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+const thousands = ["", "Thousand", "Million", "Billion", "Trillion"];
+
+function numberToWords(num) {
+  if (num === 0) return "Zero";
+
+  let words = "";
+
+  function helper(n) {
+    let str = "";
+
+    if (n < 10) str = units[n];
+    else if (n < 20) str = teens[n - 10];
+    else if (n < 100) str = tens[Math.floor(n / 10)] + (n % 10 !== 0 ? " " + units[n % 10] : "");
+    else str = units[Math.floor(n / 100)] + " Hundred" + (n % 100 !== 0 ? " " + helper(n % 100) : "");
+    return str;
+  }
+
+  let i = 0;
+  while (num > 0) {
+    let chunk = num % 1000;
+    
+    if (chunk) {
+      words = helper(chunk) + (thousands[i] ? " " + thousands[i] : "") + (words ? " " + words : "");
+    }
+    num = Math.floor(num / 1000);
+    i++;
+  }
+
+  return words;
+}
+
+
 // Compact Object
 /**
  * @param {Object|Array}
